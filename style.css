@@ -1,0 +1,728 @@
+:root {
+  --ink: #1c1c28;
+  --grey: #68697a;
+  --grey-light: #f5f6f8;
+  --line: #e6e7ec;
+  --purple: #3a3ac2;
+  --pink: #e01d5a;
+  --pink-dark: #c9184f;
+  --yellow: #f6b81f;
+  --white: #fff;
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--grey-light);
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: text-decoration-color .15s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* ---------- Announcement Bar ---------- */
+.announcement {
+  background: var(--yellow);
+  text-align: center;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.announcement a {
+  margin-left: 6px;
+}
+
+/* ---------- Header & Navigation Navigation ---------- */
+header {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.logo svg {
+  width: 26px;
+  height: 26px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .03em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+}
+
+.chevron-icon {
+  font-size: .7rem;
+}
+
+.pro-tag {
+  background: var(--purple);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 5px;
+  margin-left: 4px;
+}
+
+.github-btn {
+  background: #141414;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 22px;
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.github-btn:hover {
+  opacity: .85;
+  text-decoration: none;
+}
+
+/* ---------- Dropdown Box UI (Exact match to image_db24e3) ---------- */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -20px;
+  background: var(--white);
+  min-width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Active drop visualization on link state */
+.dropdown-container:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 15px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 800;
+  font-style: italic; /* Oblique uppercase aesthetics */
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s ease;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background: var(--grey-light);
+}
+
+.dropdown-item .item-icon {
+  font-size: 1.15rem;
+  color: var(--ink);
+  width: 24px;
+  text-align: center;
+}
+
+/* ---------- Breadcrumb & Steps ---------- */
+.breadcrumb {
+  background: #fff;
+  padding: 22px 40px;
+  font-weight: 800;
+  font-size: .85rem;
+  letter-spacing: .03em;
+  border-bottom: 1px solid var(--line);
+}
+
+.steps {
+  background: #fff;
+  display: flex;
+  padding: 30px 40px 0 40px;
+  gap: 40px;
+}
+
+.step {
+  flex: 1;
+  padding-bottom: 22px;
+  border-bottom: 4px solid var(--line);
+}
+
+.step.active {
+  border-bottom-color: var(--purple);
+}
+
+.step .num {
+  display: block;
+  font-weight: 800;
+  font-size: .75rem;
+  color: var(--grey);
+  letter-spacing: .05em;
+  margin-bottom: 6px;
+}
+
+.step.active .num {
+  color: var(--purple);
+}
+
+.step .label {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #9aa0ac;
+}
+
+.step.active .label {
+  color: var(--purple);
+}
+
+main {
+  padding: 40px;
+}
+
+/* ---------- Challenge card ---------- */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tag {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+.tag.free { background: #e3e1fb; color: #4b3ff2; }
+.tag.html { background: #dceeff; color: #1c7ed6; }
+.tag.css { background: #ffe9c2; color: #d98b0d; }
+
+.level {
+  float: right;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: .9rem;
+}
+
+.level .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: #2fd482;
+  display: inline-block;
+}
+
+.card h1 {
+  font-size: 2.1rem;
+  margin: 0 0 18px 0;
+}
+
+.card p.desc {
+  color: var(--grey);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 46ch;
+}
+
+.btn-start {
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 34px;
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .03em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.btn-start:hover {
+  background: var(--pink-dark);
+}
+
+.joined {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.joined .icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e3e1fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple);
+  font-size: 1.3rem;
+}
+
+/* ---------- Testi Frame Preview ---------- */
+.preview-frame {
+  background: var(--grey-light);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.testi-grid.mobile {
+  grid-template-columns: 1fr;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+.testi-card {
+  border-radius: 10px;
+  padding: 16px;
+  font-size: .72rem;
+  line-height: 1.4;
+}
+
+.testi-card.dark { background: var(--purple); color: #fff; }
+.testi-card.darker { background: #252641; color: #fff; }
+.testi-card.light { background: #fff; color: var(--ink); box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+
+.testi-card .who { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+.avatar { width: 26px; height: 26px; border-radius: 50%; background: #c9cddc; display: flex; align-items: center; overflow: hidden; }
+.avatar svg { width: 100%; height: 100%; }
+.testi-card .name { font-weight: 700; font-size: .75rem; }
+.testi-card .role { font-size: .6rem; opacity: .7; }
+.testi-card .quote { font-weight: 700; margin-bottom: 6px; font-size: .75rem; }
+
+.toggle-row { display: flex; justify-content: center; gap: 16px; margin-top: 22px; }
+.toggle-btn { border-radius: 30px; padding: 12px 26px; font-weight: 800; font-size: .85rem; border: 2px dashed transparent; background: var(--grey-light); color: var(--grey); cursor: pointer; }
+.toggle-btn.active { background: var(--purple); color: #fff; border-color: #1d1f8f; }
+
+/* ---------- Two column info section ---------- */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.panel { background: #fff; border-radius: var(--radius); padding: 36px; }
+.panels-column { display: flex; flex-direction: column; }
+.panel h2 { display: flex; align-items: center; gap: 12px; font-size: 1.5rem; margin-top: 0; }
+.panel p, .brief-list { color: var(--grey); line-height: 1.7; }
+.panel code { background: var(--grey-light); padding: 3px 8px; border-radius: 5px; font-family: monospace; }
+
+.check-list { list-style: none; padding: 0; margin: 0; }
+.check-list li { display: flex; gap: 12px; align-items: flex-start; padding: 8px 0; color: var(--grey); }
+.check-list .yes i { color: #2fd482; }
+.check-list .no i { color: var(--pink); }
+.panel ol { color: var(--grey); line-height: 1.8; padding-left: 20px; }
+
+/* ---------- Centered FAQs Section (Exact match to image_db9204) ---------- */
+.faq-section {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally center contents */
+}
+
+.faq-title {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: .08em;
+  margin-bottom: 28px;
+  color: var(--ink);
+  text-align: center;
+}
+
+.faq-container {
+  width: 100%;
+  max-width: 720px; /* Aligns neatly within content structure */
+}
+
+.faq-item {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 22px 28px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-q i {
+  font-size: 1.2rem;
+  color: var(--ink);
+  transition: transform .2s ease;
+}
+
+.faq-item.open .faq-q i {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+  padding: 0 28px;
+}
+
+.faq-item.open .faq-a {
+  max-height: 200px;
+  padding-bottom: 22px;
+}
+
+.faq-a p {
+  color: var(--grey);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ---------- Discord Banner ---------- */
+.discord-banner {
+  background: var(--purple); color: #fff; border-radius: var(--radius);
+  padding: 60px 40px; text-align: center; margin-top: 60px;
+}
+.discord-banner i.fa-discord { font-size: 2.2rem; margin-bottom: 10px; }
+.discord-banner h3 { letter-spacing: .05em; margin: 10px 0; }
+.discord-banner p { max-width: 600px; margin: 0 auto 26px auto; opacity: .9; line-height: 1.6; }
+.discord-btn { background: #fff; color: var(--purple); border: none; border-radius: 30px; padding: 14px 30px; font-weight: 800; text-decoration: none; display: inline-block; }
+
+/* ---------- Centered Newsletter & Input UI (Exact match to image_db9277) ---------- */
+footer {
+  background: #fff;
+  padding: 50px 40px;
+  margin-top: 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 14px;
+}
+
+.footer-socials a {
+  width: 38px; height: 38px; border-radius: 50%; background: #1fb5e0; color: #fff;
+  display: flex; align-items: center; justify-content: center; text-decoration: none;
+}
+
+.newsletter {
+  max-width: 600px;
+  margin: 0 auto 45px auto; /* Perfectly centers layout container */
+  text-align: left; 
+}
+
+.newsletter h3 {
+  color: #3b4363;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.newsletter p {
+  color: var(--grey);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* Form block */
+.subscribe-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.subscribe-row input {
+  padding: 15px 20px;
+  border: 1px solid #d3d5df;
+  border-radius: 6px; /* Smooth square corner matching image */
+  width: 250px; /* Small, specific standard sizing from screenshot */
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  background: var(--white);
+}
+
+.subscribe-row input:focus {
+  border-color: var(--purple);
+}
+
+/* Native UI validation pop validation trigger styling */
+.subscribe-row input:invalid {
+  box-shadow: none; 
+}
+
+.subscribe-row button {
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 36px;
+  font-weight: 800;
+  font-style: italic; /* Oblique text dynamic */
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.subscribe-row button:hover {
+  background: var(--pink-dark);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 40px;
+}
+
+.footer-links h4 { font-size: .8rem; letter-spacing: .05em; margin-bottom: 14px; }
+.footer-links ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { color: var(--grey); text-decoration: underline; font-size: .9rem; }
+
+/* ---------- Media Queries for Full Responsiveness ---------- */
+@media (max-width: 1024px) {
+  .card { grid-template-columns: 1fr; padding: 30px; }
+}
+
+@media (max-width: 768px) {
+  header, .breadcrumb, main, footer, .steps { padding-left: 20px; padding-right: 20px; }
+  header { flex-direction: column; gap: 15px; }
+  nav { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .steps { flex-direction: column; gap: 15px; }
+  .info-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; gap: 20px; align-items: center; }
+  .footer-links { grid-template-columns: repeat(2, 1fr); }
+  .subscribe-row { flex-direction: column; align-items: flex-start; width: 100%; }
+  .subscribe-row input { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .footer-links { grid-template-columns: 1fr; }
+}
+
+
+/* ---------- Left-Aligned Newsletter & Input UI ---------- */
+.newsletter {
+  max-width: 600px;
+  margin: 0 0 45px 0; /* Pehle '0 auto' tha centering ke liye, ab left alignment ke liye '0 0 45px 0' kar diya hai */
+  text-align: left; 
+}
+
+.newsletter h3 {
+  color: #3b4363;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.newsletter p {
+  color: var(--grey);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+/* Form block */
+.subscribe-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start; /* Ensure elements align to the left inside the flex row */
+}
+
+.subscribe-row input {
+  padding: 15px 20px;
+  border: 1px solid #d3d5df;
+  border-radius: 6px; 
+  width: 250px; 
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  background: var(--white);
+}
+
+.subscribe-row input:focus {
+  border-color: var(--purple);
+}
+
+.subscribe-row button {
+  background: var(--pink);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px 36px;
+  font-weight: 800;
+  font-style: italic; 
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.subscribe-row button:hover {
+  background: var(--pink-dark);
+}
+
+
+/* ---------- Two Column Info Section Spacing Fix ---------- */
+.info-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 40px; /* Spacing ko 24px se barha kar 40px kiya hai taake clean separation mile */
+  margin-top: 40px; 
+  align-items: start;
+}
+
+.panel { 
+  background: #fff; 
+  border-radius: var(--radius); 
+  padding: 44px; /* Internal padding barha di hai text rendering behtar karne ke liye */
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
+}
+
+.panels-column { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 30px; /* Dono right side panels ke darmiyan spacing fix karne ke liye */
+}
+
+/* Purani mb-24 class agar use ho rahi thi to usko override karne ke liye */
+.mb-24 {
+  margin-bottom: 0px !important; 
+}
+
+/* ---------- Dropdown Spacing & Box Shadow Alignment ---------- */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 20px); /* Text se thoda niche drop karne ke liye spacing barhaye */
+  left: -20px;
+  background: var(--white);
+  min-width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Deep elegant drop shadow */
+  border: 1px solid var(--line);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Icon aur text ke darmiyan space barhaye */
+  padding: 18px 24px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 800;
+  font-style: italic; 
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--line);
+}
+
+
+
+.avatar-img {
+  width: 28px;        /* Image ko chota karne ke liye size 32px se kam karke 28px kar diya */
+  height: 28px;       /* Height bhi 28px taake image completely square rahe */
+  border-radius: 50%; /* Isse corners 100% round (gol) ho jayeinge */
+  object-fit: cover;  /* Yeh property image ko stretch ya kharab nahi hone degi */
+  display: block;     /* Alignment errors ko theek karne ke liye */
+  flex-shrink: 0;     /* Flexbox row mein image ko squeeze ya flat hone se rokega */
+  border: 2px solid rgba(255, 255, 255, 0.35); /* Image ke baahar ek pyari si light white boundary lines banayega */
+}
